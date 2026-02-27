@@ -1,34 +1,13 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class UIInputHandler : MonoBehaviour, IInputProvider
+public class UIInputHandler : MonoBehaviour
 {
-    [SerializeField] private LobbyHandler lobbyHandler;
-    public event Action<Vector2> OnMove;
+    [SerializeField] private LobbySystem lobbySystem;
 
-    public void OnJoinButtonPressed()
+    public void JoinButtonPressed()
     {
-        if(lobbyHandler != null) lobbyHandler.JoinRoom();
-    }
-
-    public void TryAgainButtonPressed()
-    {
-        SceneManager.LoadScene(0);
-    }
-
-    public void LeftButtonDown()
-    {
-        OnMove?.Invoke(Vector2.left);
-    }
-
-    public void LeftRigthButtonUp()
-    {
-        OnMove?.Invoke(Vector2.zero);
-    }
-
-    public void RightButtonDown()
-    {
-        OnMove?.Invoke(Vector2.right);
+        lobbySystem.JoinGame();
     }
 }

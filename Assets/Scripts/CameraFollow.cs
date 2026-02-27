@@ -6,7 +6,6 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float smoothTime = 0.125f;
     
     private Transform target;
-    private Vector3 currentVelocity = Vector3.zero;
 
     void LateUpdate()
     {
@@ -14,7 +13,7 @@ public class CameraFollow : MonoBehaviour
 
         Vector3 targetPosition = target.position + offset;
 
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);
+        transform.position = targetPosition;
     }
 
     public void InjectTarget(Transform tar)
